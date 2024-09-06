@@ -13,6 +13,10 @@ Route::get("/autenticacao", function () {
     return Inertia::render("Auth/Autenticacao");
 });
 
+Route::get("/autenticacao-login", function () {
+    return Inertia::render("Auth/AutenticacaoLogin");
+});
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
