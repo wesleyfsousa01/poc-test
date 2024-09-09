@@ -1,5 +1,12 @@
 import { Link, Head } from '@inertiajs/react';
 import { PageProps } from '@/types';
+import { BrInput, BrTag } from '@govbr-ds/react-components';
+
+import logoBanco from '../../../public/imgs/InternetBanking-green.png'
+import logoQRCode from '../../../public/imgs/qrcode.png'
+import logoCD from '../../../public/imgs/CD.png'
+import logoCDNuvem from '../../../public/imgs/CD-Nuvem.png'
+import { useState } from 'react';
 
 export default function Welcome({ auth, laravelVersion, phpVersion }: PageProps<{ laravelVersion: string, phpVersion: string }>) {
     const handleImageError = () => {
@@ -9,10 +16,24 @@ export default function Welcome({ auth, laravelVersion, phpVersion }: PageProps<
         document.getElementById('background')?.classList.add('!hidden');
     };
 
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
     return (
         <>
             <Head title="Welcome" />
             <h1>IFG</h1>
+            <div>
+                <div className="br-input input-button">
+                    <label htmlFor="input-password">Senha</label>
+                    <input id="input-password" type="password" placeholder="Digite sua senha" />
+                    <button className="br-button" type="button" aria-label="Exibir senha" role="switch" aria-checked="false"><i className="fas fa-eye" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
             {/* <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
                 <img id="background" className="absolute -left-20 top-0 max-w-[877px]" src="https://laravel.com/assets/img/welcome/background.svg" />
                 <div className="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">

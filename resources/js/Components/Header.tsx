@@ -1,6 +1,33 @@
 import { BrHeader } from "@govbr-ds/react-components";
+import LogoutButton from "./LogoutButton";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 export default function Header() {
+
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    
+
+    function toLogin() {
+        window.location.href = '/login';
+    }
+
+    useEffect(() => {
+        const checkAuth = async () => {
+            try {
+                const response = await axios.get('/check-auth');
+                setIsAuthenticated(response.data.authenticated);
+            } catch (error) {
+                console.error('Erro ao verificar autenticação', error);
+            }
+        };
+
+        checkAuth();
+    }, []);
+
+
+
     return (
         <BrHeader
             features={[
@@ -26,7 +53,9 @@ export default function Header() {
                 },
             ]}
             menuId="main-navigation"
-            onClickLogin={function Dc() {}}
+            onClickLogin={toLogin}
+            loggedIn={isAuthenticated}
+            avatar={<LogoutButton />}
             onSearch={function Dc() {}}
             quickAccessLinks={[
                 {
@@ -44,6 +73,7 @@ export default function Header() {
             subTitle="Sinajuve"
             title="ID Jovem"
             urlLogo="https://www.gov.br/ds/assets/img/govbr-logo.png"
-        />
+        >
+        </BrHeader>
     );
 }

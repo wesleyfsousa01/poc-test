@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.oculto {
+  display: none; /* Esconde o componente */
+}
+
+.documentos-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.documento {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  width: 200px;
+}
+
+.documento h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.documento p {
+  font-size: 14px;
+  margin: 5px 0;
+}

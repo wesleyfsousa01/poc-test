@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import axios from 'axios';
+import topbar from 'topbar';
 import {
     BrButton,
     BrCard,
@@ -14,6 +17,28 @@ import logo_cd from "../../../../public/imgs/CD.png";
 import logo_cd_nuvem from "../../../../public/imgs/CD-Nuvem.png";
 
 export default function Autenticacao() {
+    const [email, setEmail] = useState('')
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const handleEmailCheck = async () => {
+        topbar.show();
+        try {
+            const response = await axios.post('/login/check-email', { email });
+            
+            if (response.data.success) {
+                localStorage.setItem('userEmail', email);
+
+                window.location.href = '/auth/password';
+            } else {
+                setErrorMessage('E-mail não encontrado.');
+            }
+        } catch (error) {
+            setErrorMessage('Erro ao verificar o e-mail.');
+        } finally {
+            topbar.hide();
+        }
+    };
+
     return (
         <div className="row">
             <div className="col d-none d-md-block col p-0 p-lg-base">
@@ -25,7 +50,7 @@ export default function Autenticacao() {
             </div>
             <div className="max-w-[400px] col p-0 p-lg-base">
                 <BrCard className="">
-                    <h1 className="text-weight-bold text-up-02">
+                <h1 className="text-weight-bold text-up-02">
                         Identifique-se no gov.br com:
                     </h1>
                     <div className="d-flex align-baseline">
@@ -36,12 +61,20 @@ export default function Autenticacao() {
                         Digite seu CPF para <strong>criar</strong> ou{" "}
                         <strong>acessar</strong> sua conta gov.br
                     </p>
-                    <form action="">
-                        <BrInput label="CPF" placeholder="Digite o seu CPF" />
+                    <form 
+                    onSubmit={(e) => { 
+                    e.preventDefault(); 
+                    handleEmailCheck();
+                     }}>
+                        <BrInput
+                            label="Email"
+                            placeholder="Digite o seu Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        {errorMessage && <p className="text-danger">{errorMessage}</p>}
                         <div className="d-flex justify-end">
-                            <BrButton primary className="my-5">
-                                Continuar
-                            </BrButton>
+                            <BrButton primary className="my-5" type="submit">Continuar</BrButton>
                         </div>
                     </form>
                     <p className="text-weight-semi-bold">

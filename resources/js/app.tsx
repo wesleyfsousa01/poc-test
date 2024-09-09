@@ -14,6 +14,11 @@ import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 
 import Layout from './Layouts/Layout';
+import topbar from 'topbar';
+
+topbar.config({
+    barColors: {0: '#071d41'}
+})
 
 // REDUX
 // import { Provider } from 'react-redux';

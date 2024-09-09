@@ -43,6 +43,7 @@ export default function Home() {
                             </BrButton>
                         </div>
                     </div>
+
                     <div className="col my-2">
                         <img
                             src={mobileImage}
