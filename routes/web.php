@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Auth\LoginController;
@@ -19,14 +20,22 @@ Route::get('/welcome', function () {
 })->name('welcome');
 
 // Página de faleconosco
-Route::get('/fale-conosco', function () {
-    return Inertia::render('FaleConosco');
-})->name('faleconosco');
+// Route::get('/fale-conosco', function () {
+//     return Inertia::render('FaleConosco');
+// })->name('faleconosco');
+
+Route::get('/teste', function() {
+    return Inertia::render('Teste', [
+        'routeUrl' => route('contato.fale-conosco.store'),
+    ]);
+});
+Route::get('/fale-conosco', [ContatoController::class, 'index'])->name('contato.fale-conosco.index');
+Route::post('/fale-conosco', [ContatoController::class, 'store'])->name('contato.fale-conosco.store');
 
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login/check-email', [AuthController::class, 'checkEmail']);
-Route::get('/auth/password', [AuthController::class, 'showPasswordForm']); 
+Route::get('/auth/password', [AuthController::class, 'showPasswordForm']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/check-auth', [AuthController::class, 'checkAuth']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -36,7 +45,7 @@ Route::middleware('guest')->prefix('register')->name('register.')->group(functio
     Route::get('/', function () {
         return Inertia::render('Auth/Register');
     })->name('form');
-    
+
     Route::post('/', [RegisteredUserController::class, 'store'])->name('store');
 });
 

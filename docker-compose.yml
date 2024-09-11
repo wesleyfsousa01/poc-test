@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
     laravel.test:
         build:
@@ -26,6 +28,7 @@ services:
             - mysql
             - redis
             - pgsql
+            - phpmyadmin
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
@@ -90,6 +93,18 @@ services:
                 - '${DB_USERNAME}'
             retries: 3
             timeout: 5s
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - '8081:80'
+        environment:
+            PMA_HOST: mysql
+            PMA_USER: '${DB_USERNAME}'
+            PMA_PASSWORD: '${DB_PASSWORD}'
+        networks:
+            - sail
+        depends_on:
+            - mysql
 networks:
     sail:
         driver: bridge
