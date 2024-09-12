@@ -10,12 +10,13 @@ class ApiController extends Controller
     // app/Http/Controllers/ApiController.php
     public function consultarIdJovem($codigo)
     {
-        $url = 'https://idjovem.juventude.gov.br/apiv1consultaid';
-        $cnpj = '29.979.036/0001-40';
+        $url = 'url_aqui';
+        $cnpj = 'cnpjaqui';
+        $codificacao_encode64_codigo_senha
 
         // Definir o cabeçalho Authorization e outros headers
         $response = Http::withHeaders([
-            'Authorization' => 'Basic MzVjYzI3YTc0MTVlYzA4MWRlZTJkNjMzODBjNGZhN2I6NjY0OTEyZjc0ZGI3YzVkZDI0OWMyNTY2OWRhNmRlODY=',
+            'Authorization' => 'Basic ' . $codificacao_encode64_codigo_senha,
             'User-Agent' => 'insomnia/9.3.3'
         ])->get($url, [
                     'cnpj' => $cnpj,

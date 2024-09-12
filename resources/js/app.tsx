@@ -1,7 +1,6 @@
 import './bootstrap';
 import '../css/app.css';
 
-// Imports do Gov
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@govbr-ds/core/dist/core.min.css";
 
@@ -20,9 +19,7 @@ topbar.config({
     barColors: {0: '#071d41'}
 })
 
-// REDUX
-// import { Provider } from 'react-redux';
-// import { store } from './store';
+
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 

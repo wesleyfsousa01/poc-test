@@ -72,10 +72,10 @@ export default function Autenticacao() {
                         </h1>
                         <div className="d-flex align-baseline">
                             <img src={logo_card_cpf} alt="" />
-                            <p className="text-up-01 ml-2">Número do CPF</p>
+                            <p className="text-up-01 ml-2">Endereço de Email</p>
                         </div>
                         <p className="text-base mt-2">
-                            Digite seu CPF para <strong>criar</strong> ou{" "}
+                            Digite seu Email para <strong>criar</strong> ou{" "}
                             <strong>acessar</strong> sua conta gov.br
                         </p>
                         <form
