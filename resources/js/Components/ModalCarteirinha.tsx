@@ -45,21 +45,4 @@ export default function ModalCarteirinha({ dadosCarteirinha, setClose }: IProps)
     </div>
 
   )
-
-  // return (
-  //   <>
-  //     <BrCard style={{position: 'absolute', zIndex: 9999}} className="br-modal">
-  //       <h1>ID Jovem</h1>
-  //       <p>Código: { }</p>
-  //       <p>Nome: {nome}</p>
-  //       <p>CPF: {cpf}</p>
-  //       <p>Data de Nascimento: {data_nascimento}</p>
-  //       <p>NIS: {nis}</p>
-  //       <p>Situacao: {situacao}</p>
-  //       <p>Validade: {validade}</p>
-  //       <p>QR Code: {qrCode}</p>
-  //       <p>Cadastro: {pessoa_cadastrada ? 'Cadastrado' : 'Não Cadastrado'}</p>
-  //     </BrCard>
-  //   </>
-  // )
 }
