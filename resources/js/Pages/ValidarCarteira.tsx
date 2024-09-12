@@ -24,7 +24,7 @@ export default function ValidarCarteira() {
       setDados([response.data]);
       if (response.status === 200) {
         setClose(true);
-        setCodigo(''); // Limpa o campo de código
+        setCodigo('');
       }
       console.log('Dados recebidos:', response.data);
     } catch (error) {
@@ -54,7 +54,6 @@ export default function ValidarCarteira() {
           ))}
         </>
       }
-      {/* <ModalCarteirinha /> */}
       <BrBreadcrumbs
         crumbs={[
           {
