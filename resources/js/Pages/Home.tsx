@@ -1,4 +1,4 @@
-import { BrButton, BrCard } from "@govbr-ds/react-components";
+import { BrBreadcrumbs, BrButton, BrCard } from "@govbr-ds/react-components";
 import { Head } from "@inertiajs/react";
 import logo from "../../../public/imgs/idjovem-logo.png";
 import mobileImage from "../../../public/imgs/idjovem-home.png";
@@ -7,6 +7,19 @@ export default function Home() {
     return (
         <>
             <Head title="ID Jovem" />
+            <BrBreadcrumbs
+                crumbs={[
+                    {
+                        isHome: true,
+                        label: 'home',
+                        onClick: function Dc() { }
+                    },
+                    {
+                        active: true,
+                        label: 'ID Jovem',
+                    }
+                ]}
+            />
             <div className="container my-4">
                 <img
                     src={logo}

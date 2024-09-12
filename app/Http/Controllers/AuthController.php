@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class AuthController extends Controller
 {
@@ -73,4 +74,45 @@ class AuthController extends Controller
             'user' => Auth::user()
         ]);
     }
+
+    // public function handleLogin(Request $request)
+    // {
+    //     // Validação dos dados
+    //     $request->validate([
+    //         'cnpj' => 'required|string',
+    //         'codigo' => 'required|string',
+    //     ]);
+    
+    //     $cnpj = $request->input('cnpj');
+    //     $codigo = $request->input('codigo');
+    
+    //     // Credenciais do cliente codificadas manualmente (base64)
+    //     $client_id = env('CLIENT_ID');
+    //     $client_key = env('CLIENT_KEY');
+    //     $credentials = base64_encode(";{$client_id}:{$client_key}")
+    
+    //     try {
+    //         // Requisição com os mesmos parâmetros e cabeçalhos
+    //         $response = Http::withHeaders([
+    //             'Authorization' => 'Basic ' . $credentials,
+    //             'User-Agent' => 'insomnia/9.3.3',
+    //         ])->get("https://idjovem.juventude.gov.br/apiv1consultaid", [
+    //             'cnpj' => $cnpj,
+    //             'codigo' => $codigo,
+    //         ]);
+    
+    //         if ($response->successful()) {
+    //             return response()->json($response->json());
+    //         }
+    
+    //         // Retorna erro caso a requisição falhe
+    //         return response()->json([
+    //             'error' => 'Erro ao realizar login',
+    //             'details' => $response->body()
+    //         ], 400);
+    //     } catch (\Exception $e) {
+    //         return response()->json(['error' => $e->getMessage()], 500);
+    //     }
+    // }
+
 }

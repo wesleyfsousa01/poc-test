@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\ApiController;
 
 // Página inicial
 Route::get('/', function () {
@@ -23,7 +24,16 @@ Route::get('/fale-conosco', function () {
     return Inertia::render('FaleConosco');
 })->name('faleconosco');
 
+//validar carteirinha com laravel
+Route::post('/validar-carteirinha', [AuthController::class, 'handleLogin']);
 
+//Route::get('/consultar-idjovem', [ApiController::class, 'consultarIdJovem']);
+
+Route::get('/consultar-id-jovem/{codigo}', [ApiController::class, 'consultarIdJovem'])->name('consultar.idjovem');
+
+
+
+// demais rotas
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login/check-email', [AuthController::class, 'checkEmail']);
 Route::get('/auth/password', [AuthController::class, 'showPasswordForm']); 
@@ -40,10 +50,14 @@ Route::middleware('guest')->prefix('register')->name('register.')->group(functio
     Route::post('/', [RegisteredUserController::class, 'store'])->name('store');
 });
 
-// Páginas autenticadas
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/validar', function () {
-        return Inertia::render('ValidarCarteira');
-    })->name('validar');
+Route::get('/validar', function () {
+    return Inertia::render('ValidarCarteira');
 });
+
+// // Páginas autenticadas
+// Route::middleware(['auth', 'verified'])->group(function () {
+//     Route::get('/validar', function () {
+//         return Inertia::render('ValidarCarteira');
+//     })->name('validar');
+// });
 
