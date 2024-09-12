@@ -13,6 +13,19 @@ export default function Header() {
         window.location.href = '/login';
     }
 
+    function toValidar() {
+        window.location.href = '/validar';
+    }
+
+    function toFaleConosco() {
+        window.location.href = '/fale-conosco';
+    }
+
+    function toHome() {
+        window.location.href = '/';
+    }
+
+
     useEffect(() => {
         const checkAuth = async () => {
             try {
@@ -59,12 +72,12 @@ export default function Header() {
             onSearch={function Dc() {}}
             quickAccessLinks={[
                 {
-                    label: "Acesso Rápido 1",
-                    onClick: function Dc() {},
+                    label: "Validar Carteirinha",
+                    onClick: toValidar,
                 },
                 {
-                    label: "Acesso Rápido 2",
-                    onClick: function Dc() {},
+                    label: "Fale Conosco",
+                    onClick: toFaleConosco,
                 },
             ]}
             showMenuButton

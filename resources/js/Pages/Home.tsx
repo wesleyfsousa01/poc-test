@@ -4,6 +4,11 @@ import logo from "../../../public/imgs/idjovem-logo.png";
 import mobileImage from "../../../public/imgs/idjovem-home.png";
 
 export default function Home() {
+
+    function toHome() {
+        window.location.href = '/';
+      }
+    
     return (
         <>
             <Head title="ID Jovem" />
@@ -12,7 +17,7 @@ export default function Home() {
                     {
                         isHome: true,
                         label: 'home',
-                        onClick: function Dc() { }
+                        onClick: toHome
                     },
                     {
                         active: true,

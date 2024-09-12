@@ -5,7 +5,6 @@ import img_logo from "../../../public/imgs/idjovem-logo.png";
 import topbar from "topbar";
 import axios from "axios";
 import { useState } from "react";
-import ConsultarIdJovem from "./ConsultarIdJovem";
 import { IValidarCarteirinha } from "@/Interfaces/IValidarCarteirinha";
 import ModalCarteirinha from "@/Components/ModalCarteirinha";
 
@@ -35,21 +34,25 @@ export default function ValidarCarteira() {
     }
   };
 
+  function toHome() {
+    window.location.href = '/';
+  }
+
 
   return (
     <>
       <Head title='Validar' />
-      {close && 
-      <>
-      <div className="overlay"></div>
-        {dados.map((item, index) => (
-          <ModalCarteirinha
-            key={index}
-            dadosCarteirinha={item}
-            setClose={setClose}
-          />
-        ))}
-      </>
+      {close &&
+        <>
+          <div className="overlay"></div>
+          {dados.map((item, index) => (
+            <ModalCarteirinha
+              key={index}
+              dadosCarteirinha={item}
+              setClose={setClose}
+            />
+          ))}
+        </>
       }
       {/* <ModalCarteirinha /> */}
       <BrBreadcrumbs
@@ -57,7 +60,7 @@ export default function ValidarCarteira() {
           {
             isHome: true,
             label: 'home',
-            onClick: function Dc() { }
+            onClick: toHome
           },
           {
             active: true,
